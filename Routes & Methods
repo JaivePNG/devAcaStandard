@@ -1,0 +1,122 @@
+Basic routing
+
+Routing refers to determining how an application responds to a client request to a particular endpoint, which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+Each route can have one or more handler functions, which are executed when the route is matched.
+
+Route definition takes the following structure:
+
+app.METHOD(PATH, HANDLER)
+Where:
+
+app is an instance of express.
+METHOD is an HTTP request method, in lowercase.
+PATH is a path on the server.
+HANDLER is the function executed when the route is matched.
+This tutorial assumes that an instance of express named app is created and the server is running. If you are not familiar with creating an app and starting it, see the Hello world example.
+The following examples illustrate defining simple routes.
+
+Respond with Hello World! on the homepage:
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+---------
+
+Web Applications
+Express is a minimal and flexible Node.js web application framework that provides 
+a robust set of features for web and mobile applications.
+
+----------
+
+Hypertext is structured text that uses logical links (hyperlinks) between nodes containing text.
+HTTP is the protocol to exchange or transfer hypertext.
+HTTP functions as a request–response protocol in the client–server computing model. A web browser, for example, may be the client and an application running on a computer hosting a web site may be the server. The client submits an HTTP request message to the server. The server, which provides resources such as HTML files and other content, or performs other functions on behalf of the client, returns a response message to the client. The response contains completion status information about the request and may also contain requested content in its message body.
+------------
+
+A node is a basic unit used in computer science. Nodes are devices or data points on a larger network. 
+Devices such as a personal computer, cell phone, or printer are nodes. When defining nodes on the internet, 
+a node is anything that has an IP address. Nodes are individual parts of a larger 
+data structure, such as linked lists and tree data structures. Nodes contain data and also may link to other nodes. 
+Links between nodes are often implemented by pointers.
+
+------------
+
+Request - Response
+Request–response, or request–reply, is one of the basic methods computers use to communicate with each other, in which the first computer sends a request for some data and the second computer responds to the request. Usually, there is a series of such interchanges until the complete message is sent; browsing a web page is an example of request–response communication. Request–response can be seen as a telephone call, in which someone is called and they answer the call.
+
+Request–response is a message exchange pattern in which a requestor sends a request message to a replier system which receives and processes the request, ultimately returning a message in response. This is a simple, but powerful messaging pattern which allows two applications to have a two-way conversation with one another over a channel. This pattern is especially common in client–server architectures.[1]
+
+For simplicity, this pattern is typically implemented in a purely synchronous fashion, as in web service calls over HTTP, which holds a connection open and waits until the response is delivered or the timeout period expires. However, request–response may also be implemented asynchronously, with a response being returned at some unknown later time. This is often referred to as "sync over async", or "sync/async", and is common in enterprise application integration (EAI) implementations where slow aggregations, time-intensive functions, or human workflow must be performed before a response can be constructed and delivered.
+
+------------
+
+app.get(path, callback [, callback ...])
+Routes HTTP GET requests to the specified path with the specified callback functions.
+
+--------- 
+app.use
+app.use() is intended for binding middleware to your application. The path is a "mount" or "prefix" path and limits the middleware to only apply to any paths requested that begin with it. It can even be used to embed another application:
+
+// subapp.js
+var express = require('express');
+var app = modules.exports = express();
+// ...
+// server.js
+var express = require('express');
+var app = express();
+
+app.use('/subapp', require('./subapp'));
+
+// ...
+By specifying / as a "mount" path, app.use() will respond to any path that starts with /, which are all of them and regardless of HTTP verb used:
+
+GET /
+PUT /foo
+POST /foo/bar
+etc.
+app.get(), on the other hand, is part of Express' application routing and is intended for matching and handling a specific route when requested with the GET HTTP verb:
+
+--------- >
+GET request:
+
+Handling GET request in Express seems so easy. You have to create instance of express and call get method. Here is small snippet to demonstrate that.
+
+var express        =        require("express");
+var app            =        express();
+app.get('handle',function(request,response){
+//code to perform particular action.
+//To access GET variable use.
+//request.var1, request.var2 etc
+});
+
+GET request can be cached and remains in browser history. This is why GET is not suppose to use for sensitive data (passwords, ATM pins etc). GET are suppose to use to retrieve data only.
+
+--------- > 
+
+POST Request:
+
+Express version 4 and above requires extra middle-ware layer to handle POST request. This middle-ware is called as ‘bodyParser’. This used to be internal part of Express framework but now you have to install it separately.
+
+You can install bodyParser by two way. Either by mentioning it in package.json or simply executing following command to download and put it in package file.
+
+sudo npm install --save body-parser
+You have to import this package in your project and tell Express to use this as middle-ware. To do so here is a code.
+
+var express        =        require("express");
+var bodyParser     =        require("body-parser");
+var app            =        express();
+//Here we are configuring express to use body-parser as middle-ware.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+Once configured you can use app.post express router to handle POST request. To access the POST query variable you can use request_variable.body.post_variable. 
+Here is a snippet to demonstrate the code.
+
+app.post('handle',function(request,response){
+var query1=request.body.var1;
+var query2=request.body.var2;
+});
+In this way you can handle the GET and POST request in Express 4.
+
+------------ >
