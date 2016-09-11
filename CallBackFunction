@@ -21,3 +21,7 @@ fileObject = open(file, writeToFile)
 It turns out we do this with some languages and frameworks. It's pretty cool! Check out Node.js to get some real practice with this kind of thinking.
 
 > 
+
+Resources
+
+http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
