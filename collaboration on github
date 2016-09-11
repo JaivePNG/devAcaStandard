@@ -9,3 +9,13 @@ https://www.atlassian.com/git/tutorials/comparing-workflows
 How To Add Collaborators to A Gitproject
 
 https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/
+
+Working on Dependencies
+
+This page has some more material on working on dependencies and forked projects as well.
+
+https://blogs.atlassian.com/2013/03/git-submodules-workflows-tips/?_ga=1.75707154.623518507.1473568873
+
+Using Rebar in Dev Dependencies for projects
+
+https://github.com/rebar/rebar/wiki/Dependency-management
