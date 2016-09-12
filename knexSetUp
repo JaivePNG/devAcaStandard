@@ -1,0 +1,19 @@
+> mkdive_name
+> npm init [this creates the json file]
+> atom . the json file
+ > write knex:knex into the script
+> npm i knex sqlite3 --save (creates the sql db engine)
+> npm run knex init [this creates the knexfile.js
+> npm run knex migrate:make ______ ( make whatever you call it here, this creates the migration foler and the db file).
+> knex migrate: latest [to push the latest migrations]
+> knex migrate:rollback [to roll back the latest migrations]
+
+Seed File --- After Migration
+
+> npm run knex seed:make ______________ [insret seed name]
+* if a directory not specified it will do it on its own.
+> Update the seed file.
+> npm run knex: run [seed name]
+or
+knex.seed.run - which runs all seeds.
+
