@@ -17,3 +17,23 @@ Seed File --- After Migration
 or
 knex.seed.run - which runs all seeds.
 
+
+Testing the Knex exports and database
+> after creating and updatin all of this, we were able to test a file.
+We created a new file, index.js and placed it outside the folders in the main folder.
+We then entered these at the top: 
+
+var development = require('./knexfile').development
+var knex = require ('knex')(development)
+
+We then entered our code for CRUD operations.
+After this was done.
+
+we ran 
+
+node index.js
+
+> and this launch the file and returned the results in the console.
+> and used the https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/ [sqlite manager]
+
+
